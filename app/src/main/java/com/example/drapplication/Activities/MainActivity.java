@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         signinbutton=(Button) findViewById(R.id.signinId);
         signupbutton=(Button) findViewById(R.id.signupId);
+
+
     }
     public void gotosignin (View view){
         Intent intent = new Intent (this,  signInActivity.class);

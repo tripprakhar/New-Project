@@ -8,4 +8,12 @@
     <string name="user">USER</string>
     <string name="doctor">DOCTOR</string>
     <string name="todo3">TODO3</string>
+    <string name="first_name">Enter first name</string>
+    <string name="middle_name">Enter middle name</string>
+    <string name="last_name">Enter last name</string>
+    <string name="enter_email">Enter email</string>
+    <string name="phn_no">Enter Phone no.</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_age">Enter age</string>
+    <string name="enter_detail">Enter Details</string>
 </resources>
