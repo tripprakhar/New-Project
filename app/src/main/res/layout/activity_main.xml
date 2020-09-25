@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CFD8DC"
     tools:context=".MainActivity">
 
     <TextView
@@ -21,18 +22,22 @@
         android:id="@+id/WelcomeImage"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/istockphoto"
-        android:contentDescription="@string/todo1" />
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="158dp"
+        android:contentDescription="@string/todo1"
+        app:srcCompat="@drawable/surgeon_doctor_pngrepo_com" />
 
     <Button
         android:id="@+id/userLoginButtonId"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/WelcomeImage"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="137dp"
         android:background="@drawable/rounded_button"
         android:text="@string/user_login"
         android:textColor="#FFFFFF"
@@ -42,10 +47,13 @@
         android:id="@+id/doctorLoginId"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/WelcomeImage"
+        android:layout_alignTop="@+id/userLoginButtonId"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="142dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="136dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_button"
         android:text="@string/dr_login"

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Dr. Application</string>
     <string name="todo1">TODO1</string>
-    <string name="welcome_text">Welcome!!</string>
+    <string name="welcome_text">DYNAMIC HEALTH</string>
     <string name="todo2">TODO2</string>
-    <string name="user_login">User Login!!</string>
-    <string name="dr_login">Dr. Login!!</string>
+    <string name="user_login">SIGN IN</string>
+    <string name="dr_login">SIGN UP</string>
 </resources>
