@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CFD8DC"
+    tools:context=".Activities.signInActivity">
+    <ImageButton
+        android:id="@+id/handShake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/th"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/todo3" />
+
+    <Button
+        android:id="@+id/signInasUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/handShake"
+        android:layout_marginTop="77dp"
+        android:layout_marginStart="160dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/user"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/signInasDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signInasUser"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/doctor"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>
