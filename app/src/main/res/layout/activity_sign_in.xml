@@ -6,34 +6,33 @@
     android:layout_height="match_parent"
     android:background="#CFD8DC"
     tools:context=".Activities.signInActivity">
-    <ImageButton
-        android:id="@+id/handShake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/th"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/todo3" />
 
     <Button
         android:id="@+id/signInasUser"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/handShake"
-        android:layout_marginTop="77dp"
-        android:layout_marginStart="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="276dp"
+        android:layout_marginEnd="130dp"
         android:background="@drawable/rounded_button"
         android:text="@string/user"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/signInasDoctor"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signInasUser"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="339dp"
+        android:layout_marginEnd="125dp"
         android:background="@drawable/rounded_button"
         android:text="@string/doctor"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
 </RelativeLayout>
