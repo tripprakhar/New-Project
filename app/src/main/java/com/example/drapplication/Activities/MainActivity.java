@@ -1,8 +1,10 @@
-package com.example.drapplication;
+package com.example.drapplication.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.drapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 

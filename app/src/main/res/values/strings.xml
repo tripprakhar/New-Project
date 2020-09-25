@@ -4,5 +4,8 @@
     <string name="welcome_text">DYNAMIC HEALTH</string>
     <string name="todo2">TODO2</string>
     <string name="user_login">SIGN IN</string>
-    <string name="dr_login">SIGN UP</string>
+    <string name="user_signup">SIGN UP</string>
+    <string name="user">User!!</string>
+    <string name="doctor">Doctor!!</string>
+    <string name="todo3">TODO3</string>
 </resources>
