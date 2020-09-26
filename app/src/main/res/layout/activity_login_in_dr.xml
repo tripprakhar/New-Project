@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.loginInDr"
+    android:background="#CFD8DC">
+    <TextView
+        android:id="@+id/Drenter_credentials"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_credentials"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"/>
+    <EditText
+        android:id="@+id/Drlogin_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/enter_email"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/rounded_button"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/Drlogin_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/Drlogin_email"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_button"
+        android:hint="@string/enter_password"
+        android:layout_centerHorizontal="true"
+        android:importantForAutofill="no"
+        />
+
+    <Button
+        android:id="@+id/Druser_loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_button"
+        android:background="@drawable/rounded_button"
+        android:layout_below="@+id/Drlogin_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
