@@ -18,4 +18,5 @@
     <string name="enter_detail">Enter Details</string>
     <string name="login_button">Login</string>
     <string name="enter_credentials">Enter Credentials</string>
+    <string name="Doctor_next">Next</string>
 </resources>
