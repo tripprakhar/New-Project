@@ -19,4 +19,10 @@
     <string name="login_button">Login</string>
     <string name="enter_credentials">Enter Credentials</string>
     <string name="Doctor_next">Next</string>
+    <string name="todo4">TODO4</string>
+    <string name="degree_name">Enter your degree name</string>
+    <string name="enter_specialization">Enter your specialization</string>
+    <string name="year_experience">No. of year of experience</string>
+    <string name="Dr.present_work">"Presently working "</string>
+    <string name="enter_Qualificatiton">Qualification Details</string>
 </resources>

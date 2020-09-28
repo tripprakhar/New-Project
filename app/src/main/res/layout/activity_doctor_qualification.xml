@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.DoctorQualificationActivity"
+    android:background="#CFD8DC">
+
+    <TextView
+        android:id="@+id/qualificationText"
+        android:layout_width="209dp"
+        android:layout_height="41dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="@string/enter_Qualificatiton"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/profile_pic"
+        style="@android:style/Widget.Material.Light.ImageButton"
+        android:layout_below="@+id/qualificationText"
+        android:layout_width="134dp"
+        android:layout_height="128dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/blank_profile_pic"
+        android:contentDescription="@string/todo4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/degree_name"
+        android:layout_width="214dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/profile_pic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:hint="@string/degree_name"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/specialization_name"
+        android:layout_width="214dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/degree_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:inputType="text"
+        android:hint="@string/enter_specialization"
+        android:importantForAutofill="no"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/doctor_experience"
+        android:layout_width="214dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/specialization_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:inputType="number"
+        android:hint="@string/year_experience"
+        android:importantForAutofill="no"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/presently_working"
+        android:layout_width="214dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/doctor_experience"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:inputType="text"
+        android:hint="@string/Dr.present_work"
+        android:importantForAutofill="no"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textStyle="italic" />
+    <Button
+        android:layout_width="122dp"
+        android:layout_height="64dp"
+        android:layout_below="@+id/presently_working"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/user_signup"/>
+
+</RelativeLayout>
