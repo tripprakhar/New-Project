@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "663003641223",
+    "firebase_url": "https://dynamic-health-3dfa8.firebaseio.com",
+    "project_id": "dynamic-health-3dfa8",
+    "storage_bucket": "dynamic-health-3dfa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663003641223:android:fbf6eeb9deb836562d8f22",
+        "android_client_info": {
+          "package_name": "com.example.drapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663003641223-41jhetd9soi7qcsnpdejhc5to4at91rt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.drapplication",
+            "certificate_hash": "c5a50766dc5e00c9989f0e3ef1775ff7b760c574"
+          }
+        },
+        {
+          "client_id": "663003641223-03k3mhrlv16glimpjviq6qs8r4rv3lb2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWPFoZELwRPs-HAUVSdP8NzejtELvn1B0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663003641223-03k3mhrlv16glimpjviq6qs8r4rv3lb2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

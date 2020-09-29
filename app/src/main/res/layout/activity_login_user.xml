@@ -4,51 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.LoginUser"
-    android:background="#CFD8DC">
+    android:background="#CFD8DC"
+    android:clipToPadding="true"
+    android:padding="20dp"
+    tools:context=".Activities.LoginUser">
 
     <TextView
         android:id="@+id/enter_credentials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
         android:text="@string/enter_credentials"
         android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp"/>
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
         android:layout_centerHorizontal="true"
-        android:hint="@string/enter_email"
         android:layout_marginTop="150dp"
         android:background="@drawable/rounded_button"
-        android:importantForAutofill="no" />
+        android:drawablePadding="30dp"
+        android:ems="10"
+        android:hint="@string/enter_email"
+        android:importantForAutofill="no"
+        android:includeFontPadding="true"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
         android:layout_below="@+id/login_email"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/rounded_button"
+        android:ems="10"
         android:hint="@string/enter_password"
-        android:layout_centerHorizontal="true"
         android:importantForAutofill="no"
-        />
+        android:includeFontPadding="true"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/user_loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_button"
-        android:background="@drawable/rounded_button"
         android:layout_below="@+id/login_password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/login_button" />
 </RelativeLayout>
