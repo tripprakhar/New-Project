@@ -102,6 +102,7 @@
         android:textColorLink="#FFFFFF"
         android:textStyle="italic" />
     <Button
+        android:id="@+id/finalDoctorDetails"
         android:layout_width="122dp"
         android:layout_height="64dp"
         android:layout_below="@+id/presently_working"

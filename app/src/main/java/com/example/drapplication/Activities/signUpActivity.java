@@ -28,11 +28,24 @@ public class signUpActivity extends AppCompatActivity {
                 signUpasUser();
             }
         });
+        DoctorSignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signUpasDoctor();
+            }
+        });
 
+    }
+    public void signUpasDoctor()
+    {
+        Intent intent = new Intent(this,DoctorSignUP.class);
+        startActivity(intent);
+        finish();
     }
     public void signUpasUser()
     {
         Intent intent =new Intent(this,SignInuser.class);
         startActivity(intent);
+        finish();
     }
 }

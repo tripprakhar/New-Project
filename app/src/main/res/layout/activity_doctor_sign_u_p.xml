@@ -118,6 +118,7 @@
         android:textStyle="italic"
         android:importantForAutofill="no"/>
     <Button
+        android:id="@+id/next_Button"
         android:layout_width="122dp"
         android:layout_height="64dp"
         android:layout_below="@+id/Doctorpassword"
