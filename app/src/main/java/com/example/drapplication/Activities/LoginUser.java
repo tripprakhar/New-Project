@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginUser extends AppCompatActivity {
     private EditText useremail;
@@ -62,11 +63,35 @@ public class LoginUser extends AppCompatActivity {
             userAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(!task.isSuccessful()){
+                    if(task.isSuccessful()){
+                        checkIfEmailVerified();
+                    }
+                    else if(!task.isSuccessful()){
                         Toast.makeText(LoginUser.this , "Authentication failed..", Toast.LENGTH_LONG).show();
                     }
                 }
             });
+        }
+    }
+    private void checkIfEmailVerified()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user.isEmailVerified())
+        {
+            // user is verified, so you can finish this activity or send user to activity which you want.
+
+            Toast.makeText(LoginUser.this, "Successfully logged in..", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            // email is not verified, so just prompt the message to the user and restart this activity.
+            // NOTE: don't forget to log out the user.
+            Toast.makeText(LoginUser.this, "Verify your account..", Toast.LENGTH_SHORT).show();
+            //FirebaseAuth.getInstance().signOut();
+
+            //restart this activity
+
         }
     }
 }
