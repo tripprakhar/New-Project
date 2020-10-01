@@ -79,18 +79,15 @@ public class LoginUser extends AppCompatActivity {
 
         if (user.isEmailVerified())
         {
-            // user is verified, so you can finish this activity or send user to activity which you want.
-
             Toast.makeText(LoginUser.this, "Successfully logged in..", Toast.LENGTH_SHORT).show();
         }
         else
         {
-            // email is not verified, so just prompt the message to the user and restart this activity.
-            // NOTE: don't forget to log out the user.
+
             Toast.makeText(LoginUser.this, "Verify your account..", Toast.LENGTH_SHORT).show();
             //FirebaseAuth.getInstance().signOut();
 
-            //restart this activity
+
 
         }
     }
