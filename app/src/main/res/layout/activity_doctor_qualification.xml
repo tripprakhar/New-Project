@@ -11,8 +11,8 @@
         android:id="@+id/qualificationText"
         android:layout_width="209dp"
         android:layout_height="41dp"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
         android:text="@string/enter_Qualificatiton"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -20,19 +20,19 @@
     <ImageButton
         android:id="@+id/profile_pic"
         style="@android:style/Widget.Material.Light.ImageButton"
+        android:layout_width="171dp"
+        android:layout_height="164dp"
         android:layout_below="@+id/qualificationText"
-        android:layout_width="134dp"
-        android:layout_height="128dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/blank_profile_pic"
-        android:contentDescription="@string/todo4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/todo4"
+        android:scaleType="centerCrop"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFFFFF"
         android:textColorLink="#FFFFFF"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        app:srcCompat="@drawable/blank_profile_pic" />
 
     <EditText
         android:id="@+id/degree_name"
