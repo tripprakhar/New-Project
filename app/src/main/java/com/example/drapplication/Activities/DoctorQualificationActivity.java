@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -18,18 +20,23 @@ import android.widget.Toast;
 
 import com.example.drapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class DoctorQualificationActivity extends AppCompatActivity {
     private ImageButton profilePic;
@@ -39,12 +46,10 @@ public class DoctorQualificationActivity extends AppCompatActivity {
     private EditText presentlyWorking;
     private Button doctorSignUp;
     private Uri mImageUri;
-    public Uri resultUri=null;
+    public  Uri resultUri=null;
     private ProgressDialog mProgress;
     private static final int GALLERY_CODE=1;
-
     private FirebaseAuth mAuth;
-
     private StorageReference mStorage;
 
     @Override
@@ -72,6 +77,7 @@ public class DoctorQualificationActivity extends AppCompatActivity {
 
             }
         });
+
         doctorSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +90,7 @@ public class DoctorQualificationActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==GALLERY_CODE&&resultCode==RESULT_OK)
+        if(requestCode==GALLERY_CODE&&resultCode==RESULT_OK && data != null && data.getData() != null)
         {
          mImageUri=data.getData();
             CropImage.activity(mImageUri)
@@ -96,6 +102,16 @@ public class DoctorQualificationActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 resultUri = result.getUri();
                 profilePic.setImageURI(resultUri);
+                try {
+
+                    // Setting image on image view using Bitmap
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mImageUri);
+                    profilePic.setImageBitmap(bitmap);
+                }
+                catch (IOException e) {
+                    // Log the exception
+                    e.printStackTrace();
+                }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
@@ -137,7 +153,7 @@ public class DoctorQualificationActivity extends AppCompatActivity {
                mProgress.dismiss();
                if(task.isSuccessful()) {
 
-                   HashMap<String,String> m=new HashMap<>();
+                   final HashMap<String,String> m=new HashMap<>();
                    m.put("firstname",first);
                    m.put("middleName",middle);
                    m.put("lastName",last);
@@ -146,17 +162,43 @@ public class DoctorQualificationActivity extends AppCompatActivity {
                    m.put("Speciality",specialization);
                    m.put("Years",years);
                    m.put("Working",present);
-                   FirebaseDatabase.getInstance().getReference("DoctorsDetails").child(mAuth.getCurrentUser().getUid())
-                           .setValue(m).addOnCompleteListener(new OnCompleteListener<Void>() {
+                   if (mImageUri != null) {
+                       final StorageReference ref = mStorage.child("images/" + UUID.randomUUID().toString());
+                       ref.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                           @Override
+                           public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+                           {
+                               ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                   @Override
+                                   public void onSuccess(Uri uri) {
+                                       m.put("imageURL", String.valueOf(uri));
+                                       FirebaseDatabase.getInstance().getReference("DoctorsDetails").child(mAuth.getCurrentUser().getUid()).setValue(m);
+                                   }
+                               });
+                               Toast.makeText(DoctorQualificationActivity.this, "Image Uploaded..", Toast.LENGTH_SHORT).show();
+                           }
+                       })
+
+                               .addOnFailureListener(new OnFailureListener() {
+                                   @Override
+                                   public void onFailure(@NonNull Exception e)
+                                   {
+                                       Toast.makeText(DoctorQualificationActivity.this, "Image Upload Failed..", Toast.LENGTH_SHORT).show();
+                                   }
+                               });
+                   }
+
+                   FirebaseDatabase.getInstance().getReference("DoctorsDetails").child(mAuth.getCurrentUser().getUid()).setValue(m).addOnCompleteListener(new OnCompleteListener<Void>() {
                        @Override
                        public void onComplete(@NonNull Task<Void> task) {
                            if(task.isSuccessful())
                            {
-                               Toast.makeText(DoctorQualificationActivity.this, "Account Registered", Toast.LENGTH_SHORT).show();
+                               //Toast.makeText(DoctorQualificationActivity.this, "Account Registered", Toast.LENGTH_SHORT).show();
                            }
                            else
                            {
-                               Toast.makeText(DoctorQualificationActivity.this, "Account Not Registered", Toast.LENGTH_SHORT).show();
+                               //Toast.makeText(DoctorQualificationActivity.this, "Account Not Registered", Toast.LENGTH_SHORT).show();
                            }
                        }
                    });
@@ -171,4 +213,34 @@ public class DoctorQualificationActivity extends AppCompatActivity {
        });
 
     }
+//    private void uploadImage()
+//    {
+//        if (mImageUri != null) {
+//                        final StorageReference ref = mStorage.child("images/" + UUID.randomUUID().toString());
+//            ref.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//
+//                                @Override
+//                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+//                                {
+//                                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                        @Override
+//                                        public void onSuccess(Uri uri) {
+//                                            HashMap<String,String> m=new HashMap<>();
+//                                            m.put("imageURL", String.valueOf(uri));
+//                                            FirebaseDatabase.getInstance().getReference("DoctorsDetails").child(mAuth.getCurrentUser().getUid()).setValue(m);
+//                                        }
+//                                    });
+//                                    Toast.makeText(DoctorQualificationActivity.this, "Image Uploaded..", Toast.LENGTH_SHORT).show();
+//                                }
+//                            })
+//
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e)
+//                        {
+//                            Toast.makeText(DoctorQualificationActivity.this, "Image Upload Failed..", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//        }
+//    }
 }
