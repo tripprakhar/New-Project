@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -176,7 +177,7 @@ public class DoctorQualificationActivity extends AppCompatActivity {
                                        FirebaseDatabase.getInstance().getReference("DoctorsDetails").child(mAuth.getCurrentUser().getUid()).setValue(m);
                                    }
                                });
-                               Toast.makeText(DoctorQualificationActivity.this, "Image Uploaded..", Toast.LENGTH_SHORT).show();
+                               //Toast.makeText(DoctorQualificationActivity.this, "Image Uploaded..", Toast.LENGTH_SHORT).show();
                            }
                        })
 
@@ -194,11 +195,12 @@ public class DoctorQualificationActivity extends AppCompatActivity {
                        public void onComplete(@NonNull Task<Void> task) {
                            if(task.isSuccessful())
                            {
-                               //Toast.makeText(DoctorQualificationActivity.this, "Account Registered", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(DoctorQualificationActivity.this, "Account Registered", Toast.LENGTH_SHORT).show();
+                               sendVerificationEmail();
                            }
                            else
                            {
-                               //Toast.makeText(DoctorQualificationActivity.this, "Account Not Registered", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(DoctorQualificationActivity.this, "Account Not Registered", Toast.LENGTH_SHORT).show();
                            }
                        }
                    });
@@ -213,34 +215,41 @@ public class DoctorQualificationActivity extends AppCompatActivity {
        });
 
     }
-//    private void uploadImage()
-//    {
-//        if (mImageUri != null) {
-//                        final StorageReference ref = mStorage.child("images/" + UUID.randomUUID().toString());
-//            ref.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//
-//                                @Override
-//                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
-//                                {
-//                                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                                        @Override
-//                                        public void onSuccess(Uri uri) {
-//                                            HashMap<String,String> m=new HashMap<>();
-//                                            m.put("imageURL", String.valueOf(uri));
-//                                            FirebaseDatabase.getInstance().getReference("DoctorsDetails").child(mAuth.getCurrentUser().getUid()).setValue(m);
-//                                        }
-//                                    });
-//                                    Toast.makeText(DoctorQualificationActivity.this, "Image Uploaded..", Toast.LENGTH_SHORT).show();
-//                                }
-//                            })
-//
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e)
-//                        {
-//                            Toast.makeText(DoctorQualificationActivity.this, "Image Upload Failed..", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//        }
-//    }
+    private void sendVerificationEmail()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // email sent
+
+
+                            // after email is sent just logout the user and finish this activity
+                            FirebaseAuth.getInstance().signOut();
+                            startActivity(new Intent(DoctorQualificationActivity.this, loginInDr.class));
+                            finish();
+                        }
+                        else
+                        {
+                            // email not sent, so display message and restart the activity or do whatever you wish to do
+
+                            //restart this activity
+                            overridePendingTransition(0, 0);
+                            finish();
+                            overridePendingTransition(0, 0);
+                            startActivity(getIntent());
+
+                        }
+                    }
+                });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
 }
