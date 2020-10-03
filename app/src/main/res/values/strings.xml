@@ -25,4 +25,11 @@
     <string name="year_experience">No. of year of experience</string>
     <string name="Dr.present_work">"Presently working "</string>
     <string name="enter_Qualificatiton">Qualification Details</string>
+    <string name="todo5">TODO5</string>
+    <string name="name">Name:</string>
+    <string name="degree">Degree:</string>
+    <string name="specialization">Specialization:</string>
+    <string name="experience">Experience:</string>
+    <string name="presently">Present:</string>
+    <string name="phone">Mobile no:</string>
 </resources>
