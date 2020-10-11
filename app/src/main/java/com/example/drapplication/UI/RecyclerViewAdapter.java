@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.drapplication.R;
 import com.example.drapplication.Utill.DocInfo;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,7 +35,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+    DocInfo docInfo=docInfoList.get(position);
+    String imageUri=null;
+    holder.name.setText(docInfo.getFname()+docInfo.getMname()+docInfo.getLname());
+    holder.degree.setText(docInfo.getDegree());
+    holder.speciality.setText(docInfo.getSpeciality());
+    int l=docInfo.getExperience();
+    holder.exp.setText(String.valueOf(l));
+    holder.pres.setText(docInfo.getPresent());
+    holder.phone.setText(docInfo.getPhoneNo());
+        imageUri=docInfo.getImage();
+        Picasso.with(ctx).load(imageUri).into(holder.image);
     }
 
     @Override
@@ -60,7 +71,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             pres=(TextView)view.findViewById(R.id.present);
             phone=(TextView)view.findViewById(R.id.mobile);
             image=(ImageView)view.findViewById(R.id.doctor_pic);
-
 
         }
     }
